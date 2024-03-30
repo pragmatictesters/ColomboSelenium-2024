@@ -2,7 +2,8 @@
 
 
 ## TODO 
-1. Debugging the errors 
+1. Refresh what we leaned during session 1
+2. Debugging the errors 
 2. Organising the tests with TestNG annotation
 3. Overview of TestNG annotations
 2. Location strategies in Selenium 
@@ -11,3 +12,5 @@
 5. Details of the next Colombo Selenium Meetup 
 6. Refactoring in IntelliJ IDEA 
 7. Mastering XPATH and CSS 
+8. Demonstrate the cross browser testing 
+9. Getting familiar with the Java API documentation
