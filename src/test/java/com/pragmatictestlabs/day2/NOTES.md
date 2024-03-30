@@ -14,3 +14,8 @@
 7. Mastering XPATH and CSS 
 8. Demonstrate the cross browser testing 
 9. Getting familiar with the Java API documentation
+
+Test Cases
+1. Verify user can login with valid credentials 
+2. Verify error is displayed when user login with blank username and a password 
+3. Verify error is displayed in login page when user login with blank username and blank password 
