@@ -16,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class IntroductionToSyncTest {
     private WebDriver driver;
+
     @BeforeMethod
     public void beforeMethod(){
         WebDriverManager.chromedriver().setup();
@@ -56,8 +57,25 @@ public class IntroductionToSyncTest {
 
         //Explicit Wait
         //Wait till the link is visible
-        new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofMillis(50))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofMillis(50))
+                .ignoring(NullPointerException.class)
+                .withMessage("About link is not clickable")
                 .until(ExpectedConditions.elementToBeClickable(By.cssSelector("a#aboutlink")));
+
+        /**
+         *  0 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  500 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  1000 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  1500 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  2000 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  2500 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  3000 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  3500 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  4000 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  4500 : Check condition : if satisfied continue else wait/sleep 500ms
+         *  5000 : Check condition : if satisfied continue else wait/sleep Timeout Error
+         */
 
 
         //Click the About link
