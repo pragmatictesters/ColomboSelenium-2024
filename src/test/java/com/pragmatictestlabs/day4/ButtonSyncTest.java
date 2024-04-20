@@ -32,7 +32,6 @@ public class ButtonSyncTest {
     @Test
     public void testCollapseDiv() throws InterruptedException {
 
-
         //Click the button 1
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#easy00"))).click();
         //driver.findElement(By.cssSelector("#easy00")).click();
@@ -48,10 +47,37 @@ public class ButtonSyncTest {
 //        driver.findElement(By.cssSelector("#easy03")).click();
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#easy03"))).click();
 
-
         //Verify that the URL contains about.html
         Assert.assertEquals(driver.findElement(By.id("easybuttonmessage")).getText(), "All Buttons Clicked");
 
+    }
+
+
+    @Test
+    public void testHardToSyncButton() throws InterruptedException {
+
+        //Click the button 1
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#button00"))).click();
+
+        //driver.findElement(By.cssSelector("#button00")).click();
+        //Click the button 2
+
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#button01"))).click();
+
+        //driver.findElement(By.cssSelector("#button01")).click();
+
+        //Click the button 3
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#button02"))).click();
+
+//         driver.findElement(By.cssSelector("#button02")).click();
+
+        //Click the button 4
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.cssSelector("#button03"))).click();
+
+//         driver.findElement(By.cssSelector("#button03")).click();
+
+        //Verify that the URL contains about.html
+        Assert.assertEquals(driver.findElement(By.id("buttonmessage")).getText(), "All Buttons Clicked");
 
     }
 
