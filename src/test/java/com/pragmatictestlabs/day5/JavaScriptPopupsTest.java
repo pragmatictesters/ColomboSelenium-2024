@@ -33,6 +33,7 @@ public class JavaScriptPopupsTest {
 
     @Test
     public void testAlertMessage(){
+        //Test
         driver.findElement(By.id("alert")).click();
         Alert alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), "This is a simple Alert");
