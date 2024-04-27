@@ -16,23 +16,23 @@ public class JavaScriptPopupsTest {
     private WebDriver driver;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         driver = new ChromeDriver();
         driver.get("http://demosite.pragmatictestlabs.com/Alerts.html");
     }
 
     @AfterMethod
-    public void afterMethod(){
+    public void afterMethod() {
         driver.quit();
     }
 
     @Test
-    public void testAlertMessage(){
+    public void testAlertMessage() {
         //Test
         driver.findElement(By.id("alert")).click();
         Alert alert = driver.switchTo().alert();
@@ -42,7 +42,7 @@ public class JavaScriptPopupsTest {
     }
 
     @Test
-    public void testConfirmationOK(){
+    public void testConfirmationOK() {
         driver.findElement(By.id("confirmation")).click();
         Alert confirmation = driver.switchTo().alert();
         Assert.assertEquals(confirmation.getText(), "Press a button!");
@@ -51,19 +51,18 @@ public class JavaScriptPopupsTest {
 
     }
 
-     @Test
-    public void testConfirmationCancel(){
-         driver.findElement(By.id("confirmation")).click();
-         Alert confirmation = driver.switchTo().alert();
-         Assert.assertEquals(confirmation.getText(), "Press a button!");
-         confirmation.dismiss();
-         Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "It was rejected!");
+    @Test
+    public void testConfirmationCancel() {
+        driver.findElement(By.id("confirmation")).click();
+        Alert confirmation = driver.switchTo().alert();
+        Assert.assertEquals(confirmation.getText(), "Press a button!");
+        confirmation.dismiss();
+        Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "It was rejected!");
 
     }
 
-
     @Test
-    public void testPrompt(){
+    public void testPrompt() {
         String name = "Janesh";
         driver.findElement(By.id("prompt")).click();
         Alert prompt = driver.switchTo().alert();
@@ -71,15 +70,5 @@ public class JavaScriptPopupsTest {
         prompt.sendKeys(name);
         prompt.accept();
         Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "Your name is " + name);
-
     }
-
-
-
-
-
-
-
-
-
 }
