@@ -41,6 +41,45 @@ public class JavaScriptPopupsTest {
         Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "Alert was closed!");
     }
 
+    @Test
+    public void testConfirmationOK(){
+        driver.findElement(By.id("confirmation")).click();
+        Alert confirmation = driver.switchTo().alert();
+        Assert.assertEquals(confirmation.getText(), "Press a button!");
+        confirmation.accept();
+        Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "It was confirmed!");
+
+    }
+
+     @Test
+    public void testConfirmationCancel(){
+         driver.findElement(By.id("confirmation")).click();
+         Alert confirmation = driver.switchTo().alert();
+         Assert.assertEquals(confirmation.getText(), "Press a button!");
+         confirmation.dismiss();
+         Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "It was rejected!");
+
+    }
+
+
+    @Test
+    public void testPrompt(){
+        String name = "Janesh";
+        driver.findElement(By.id("prompt")).click();
+        Alert prompt = driver.switchTo().alert();
+        Assert.assertEquals(prompt.getText(), "Please enter your name");
+        prompt.sendKeys(name);
+        prompt.accept();
+        Assert.assertEquals(driver.findElement(By.id("confirm-demo")).getText(), "Your name is " + name);
+
+    }
+
+
+
+
+
+
+
 
 
 }
